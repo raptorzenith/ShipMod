@@ -1,0 +1,23 @@
+{
+  "id": "ShipMod",
+  "version": "1.1.0",
+  "display_name": "WIP Ship Mod",
+  "description_short": "English: Adds spacecraft and a dedicated research tree. / Français : ajoute des vaisseaux spatiaux et un arbre de recherche dédié.",
+  "description_long": "English: Research several spacecraft models inspired by the game's rocket production chain, with unlocks and assembly costs tailored to a space-focused progression. / Français : recherche plusieurs modèles de vaisseaux spatiaux inspirés de la chaîne de production des fusées du jeu, avec débloquages et coûts d'assemblage adaptés à une progression axée sur l'espace.",
+  "authors": [
+    "Raptor_zenith"
+  ],
+  "primary_dlls": [
+    "0Harmony.dll",
+    "CoiShipMod.dll"
+  ],
+  "primary_mod_class_name": "CoiShipMod.CoiShipMod",
+  "non_locking_dll_load": true,
+  "can_add_to_saved_game": true,
+  "can_remove_from_saved_game": true,
+  "min_game_version": "0.8.8d",
+  "max_verified_game_version": "0.8.8d",
+  "feedback_url": "https://discord.gg/wfS8Us3gHd",
+  "license": "MIT",
+  "development_state": "experimental"
+}

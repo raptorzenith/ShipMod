@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>7.3</LangVersion>
+    <AssemblyName>CoiShipMod</AssemblyName>
+    <RootNamespace>CoiShipMod</RootNamespace>
+    <COI_MANAGED_DIR Condition="'$(COI_MANAGED_DIR)' == '' and Exists('C:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed')">C:\Program Files (x86)\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed</COI_MANAGED_DIR>
+    <COI_MANAGED_DIR Condition="'$(COI_MANAGED_DIR)' == '' and Exists('C:\Program Files\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed')">C:\Program Files\Steam\steamapps\common\Captain of Industry\Captain of Industry_Data\Managed</COI_MANAGED_DIR>
+    <COI_MANAGED_DIR Condition="'$(COI_MANAGED_DIR)' == '' and Exists('$(MSBuildThisFileDirectory)..\Captain of Industry\Captain of Industry_Data\Managed')">$(MSBuildThisFileDirectory)..\Captain of Industry\Captain of Industry_Data\Managed</COI_MANAGED_DIR>
+    <COI_MANAGED_DIR Condition="'$(COI_MANAGED_DIR)' == '' and Exists('$(MSBuildThisFileDirectory)Captain of Industry_Data\Managed')">$(MSBuildThisFileDirectory)Captain of Industry_Data\Managed</COI_MANAGED_DIR>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <Target Name="ValidateCoiManagedDir" BeforeTargets="ResolveReferences">
+    <Error Condition="'$(COI_MANAGED_DIR)' == '' Or !Exists('$(COI_MANAGED_DIR)')" Text="COI managed directory not found. Set the COI_MANAGED_DIR environment variable or install Captain of Industry locally so the project can locate Captain of Industry_Data\Managed." />
+  </Target>
+
+  <ItemGroup>
+    <Reference Include="Mafi">
+      <HintPath>$(COI_MANAGED_DIR)\Mafi.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Mafi.Core">
+      <HintPath>$(COI_MANAGED_DIR)\Mafi.Core.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Mafi.Base">
+      <HintPath>$(COI_MANAGED_DIR)\Mafi.Base.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Mafi.Unity">
+      <HintPath>$(COI_MANAGED_DIR)\Mafi.Unity.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Mafi.UnityCore">
+      <HintPath>$(COI_MANAGED_DIR)\Mafi.UnityCore.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <PackageReference Include="Lib.Harmony" Version="2.4.2" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="manifest.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Assets\CoiShipMod\**\*.*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
